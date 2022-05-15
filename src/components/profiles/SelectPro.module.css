@@ -1,0 +1,55 @@
+.SelectProContainer {
+  width: 10%;
+  height: 40px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  top: 26vh;
+  left: 550px;
+}
+
+.fade {
+  width: 20%;
+  height: 40px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  top: 26vh;
+  position: relative;
+  left: 450px;
+  animation: close 200ms ease-out forwards;
+}
+
+.intro,
+.intro2 {
+  margin-top: 55px;
+  margin-left: 450px;
+  font-size: 18px;
+  position: absolute;
+  font-family: "Audiowide", cursive;
+}
+
+.intro2 {
+  margin-top: 340px;
+  margin-left: 620px;
+  font-size: 22px;
+}
+
+@keyframes close {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-125);
+  }
+  100% {
+    opacity: 0;
+    display: none;
+    transform: translateY(-350%);
+    transform: translateX(-350%);
+  }
+}

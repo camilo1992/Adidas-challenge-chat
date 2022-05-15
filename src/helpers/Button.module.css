@@ -1,0 +1,21 @@
+.button {
+  background: linear-gradient(
+    to left,
+    var(--first-colour),
+    var(--fifth-colour)
+  );
+  color: var(--fourth-colour);
+  font-family: "Audiowide", cursive;
+  text-align: left;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  border: none;
+}
+
+.button:hover {
+  background-color: var(--first-colour);
+  color: var(--fourth-colour);
+  cursor: grab;
+}

@@ -1,0 +1,28 @@
+.avatarContainer {
+  /* background-color: yellow; */
+  height: 60px;
+  width: 60px;
+  position: relative;
+  left: 2px;
+
+  top: 33vh;
+  margin: 0;
+  margin-right: 0;
+
+  animation: open 2000ms ease-out forwards;
+}
+
+.avatar {
+  font-size: 50px;
+}
+@keyframes open {
+  0% {
+    opacity: 0;
+    transform: translateY(-400%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

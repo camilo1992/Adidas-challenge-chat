@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import Welcome from "./components/salutation/Welcome";
+import BackgroundAnimated from "./components/layout/BackgroundAnimated";
+import SelectPro from "./components/profiles/SelectPro";
+import { title } from "./helpers/data";
+import Profile from "./components/profiles/Profile";
+import { useContext } from "react";
+import { ProfileContext } from "./store/Profile.context";
+import PublicChat from "./components/chatPanel/PublicChat";
+import Avatar from "./components/profiles/Avatar";
+import PrivateChat from "./components/chatPanel/PrivateChat";
+import { ChatContext } from "./store/Chat.context";
 
 function App() {
+  const proCtx = useContext(ProfileContext);
+  const chatCtx = useContext(ChatContext);
+  const chat = proCtx.isProfileSelected;
+  const chat2 = chatCtx.chatStarted;
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BackgroundAnimated />
+      <SelectPro />
+      {chat && <Avatar />}
+      <Welcome text={title} />
+      {chat && <Profile />}
+      {chat && <PublicChat />}
+      {chat2 && <PrivateChat />}
     </div>
   );
 }

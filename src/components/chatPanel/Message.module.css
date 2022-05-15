@@ -1,0 +1,26 @@
+.profileContainer {
+  content: icon;
+  margin: 0;
+  width: 8%;
+  height: 100%;
+  align-items: center;
+  /* border-left: 10px;
+  border-color: black;
+  border-left-width: 10px; */
+}
+
+.profile {
+  border-radius: 50%;
+  height: 90%;
+  width: 90%;
+}
+
+.message {
+  height: 90%;
+  width: 100%;
+  font-family: "Audiowide", cursive;
+  font-size: 90%;
+  resize: vertical;
+  color: burlywood;
+  word-wrap: break-word;
+}

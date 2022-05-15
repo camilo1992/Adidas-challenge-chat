@@ -1,0 +1,121 @@
+.animationContainer {
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: linear-gradient(
+    to left,
+    var(--third-colour),
+    var(--second-colour)
+  );
+}
+
+.animationContainer li {
+  text-align: center;
+  font-size: 35px;
+  position: absolute;
+  display: block;
+  list-style: none;
+  height: 90px;
+  width: 90px;
+  background: var(--fourth-colour);
+  list-style: none;
+  animation: animate 18s linear infinite;
+  bottom: -210px;
+  border-radius: 30%;
+  background: linear-gradient(
+    to left,
+    var(--fourth-colour),
+    var(--second-colour)
+  );
+}
+
+.animationContainer li:nth-child(1) {
+  left: 145px;
+  height: 80px;
+  width: 80px;
+  animation-delay: 0s;
+}
+.animationContainer li:nth-child(2) {
+  left: 1150px;
+  height: 99px;
+  width: 99px;
+  animation-delay: 1.5s;
+}
+
+.animationContainer li:nth-child(3) {
+  left: 400px;
+  height: 50px;
+  width: 50px;
+  animation-delay: 4.4s;
+}
+.animationContainer li:nth-child(4) {
+  left: 1340px;
+  height: 70px;
+  width: 70px;
+  animation-delay: 2.3s;
+}
+
+.animationContainer li:nth-child(5) {
+  left: 277px;
+  height: 45px;
+  width: 45px;
+  animation-delay: 10s;
+}
+.animationContainer li:nth-child(6) {
+  left: 600px;
+  height: 50px;
+  width: 50px;
+  animation-delay: 12s;
+}
+.animationContainer li:nth-child(7) {
+  left: 1000px;
+  height: 111px;
+  width: 111px;
+  animation-delay: 15s;
+}
+
+.animationContainer li:nth-child(8) {
+  left: 650px;
+  height: 88px;
+  width: 88px;
+  animation-delay: 18s;
+}
+.animationContainer li:nth-child(9) {
+  left: 550px;
+  height: 98px;
+  width: 98px;
+  animation-delay: 2.8s;
+}
+
+.animationContainer li:nth-child(10) {
+  left: 950px;
+  height: 120px;
+  width: 120px;
+  animation-delay: 7.8s;
+}
+.animationContainer li:nth-child(11) {
+  left: 950px;
+  height: 40px;
+  width: 40px;
+  animation-delay: 17.2s;
+}
+.animationContainer li:nth-child(12) {
+  left: 650px;
+  height: 50px;
+  width: 50px;
+  animation-delay: 8.8s;
+}
+@keyframes animate {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-800px) rotate(360deg);
+    opacity: 0;
+  }
+}
