@@ -54,13 +54,18 @@ function PublicChat() {
     });
   }, []);
 
-  const connecUser = () => {
-    addDoc(connectedRef, {
-      // message: messageRef.current.value,
+  const messageHandler = (e) => {
+    e.preventDefault();
+
+    addDoc(colRef, {
+      message: messageRef.current.value,
       author: { ...proCtx.profileSelected },
       createdAt: Timestamp.now(),
       userId: userId,
     });
+
+    scrollTagRef.current.scrollIntoView({ behavior: "smooth" });
+    messageRef.current.value = "";
   };
   return (
     <div className={classes.publicChatContainer}>

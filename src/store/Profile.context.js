@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { DYUMMY_DATA } from "../helpers/data";
-
 export const ProfileContext = React.createContext({
   isProfileSelected: false,
   name: "",
@@ -14,7 +12,7 @@ export const ProfileContext = React.createContext({
 const defaultProfile = {
   key: 17,
   user: "🙂",
-  name: "Piojo",
+  name: "You",
   theme: {
     first: "rgb(0, 100, 0)",
     second: "rgb(0, 4, 5)",

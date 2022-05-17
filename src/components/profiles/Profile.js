@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import classes from "./Profile.module.css";
 import User from "./User";
-import { DYUMMY_DATA } from "../../helpers/data";
 import { useContext } from "react";
 import { ChatContext } from "../../store/Chat.context";
 import { onSnapshot } from "firebase/firestore";
@@ -12,10 +11,10 @@ function Profile() {
   const [connectedUsers, setConnectedUsers] = useState([]);
 
   useEffect(() => {
+    // UPDATES CONNECTED CHAT ON THE UI....
     onSnapshot(connectedRef, (snapshot) => {
       const usersConnectedNow = [];
-      // messages.push(snapshot);
-      // setConnectedUsers(usersConnectedNow);
+
       snapshot.forEach((doc) => {
         usersConnectedNow.push({ ...doc.data() });
       });
@@ -24,7 +23,7 @@ function Profile() {
   }, []);
 
   const handleChatStarted = (e) => {
-    // Starting Chat
+    // OPEnS PRIVATE CHAT
     const talking = connectedUsers.find((element) => {
       return element.name === e.target.textContent;
     });

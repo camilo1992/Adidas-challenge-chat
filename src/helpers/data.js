@@ -2,8 +2,6 @@ export const title = "The 3 Stripes Hotel ";
 
 export const DYUMMY_DATA = [
   {
-    name: "Tito",
-    key: 1,
     user: "😐",
     theme: {
       first: "rgb(211, 228, 21)",
@@ -14,7 +12,6 @@ export const DYUMMY_DATA = [
   },
   {
     key: 2,
-    name: "Pele",
     user: "🙄",
     theme: {
       first: "rgb(5, 255, 217)",
@@ -26,7 +23,6 @@ export const DYUMMY_DATA = [
   {
     key: 3,
     user: "💀",
-    name: "Marlon",
     theme: {
       first: "rgb(143, 151, 71)",
       second: "rgb(71, 140, 138)",
@@ -37,7 +33,6 @@ export const DYUMMY_DATA = [
   {
     key: 4,
     user: "😏",
-    name: "Roony",
     theme: {
       first: "rgb(103, 18, 93)",
       second: "white",
@@ -48,7 +43,6 @@ export const DYUMMY_DATA = [
   {
     key: 5,
     user: "😀",
-    name: "kaka",
     theme: {
       first: "rgb(28, 240, 0)",
       second: "white",
@@ -59,7 +53,6 @@ export const DYUMMY_DATA = [
   {
     key: 6,
     user: "👻",
-    name: "Toti",
     theme: {
       first: "rgb(103, 18, 18)",
       second: "white",
@@ -70,7 +63,6 @@ export const DYUMMY_DATA = [
   {
     key: 7,
     user: "😁",
-    name: "Pibe",
     theme: {
       first: "white",
       second: "rgb(117, 117, 117)",
@@ -81,7 +73,6 @@ export const DYUMMY_DATA = [
   {
     key: 8,
     user: "🙂",
-    name: "Piojo",
     theme: {
       first: "rgb(22 88 115)",
       second: "rgb(176 176 176)",
@@ -92,7 +83,6 @@ export const DYUMMY_DATA = [
   {
     key: 9,
     user: "🤨",
-    name: "Tren",
     theme: {
       first: "rgb(129, 0, 0)",
       second: "rgb(133, 133, 133)",
@@ -103,7 +93,6 @@ export const DYUMMY_DATA = [
   {
     key: 10,
     user: "😑",
-    name: "Chicho",
     theme: {
       first: "rgb(103, 78, 78)",
       second: "rgb(174 152 153)",

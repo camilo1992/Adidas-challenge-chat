@@ -4,14 +4,19 @@ export const ChatContext = React.createContext({
   talkingTo: {},
   chatStarted: false,
   openChat: () => {},
+  clicks: 0,
 });
 
 const ChatContextProvider = (props) => {
   const [chatOpen, setChatOpen] = useState(false);
   const [talkTo, setTalkTo] = useState({});
+  const [clicks, setClicks] = useState(0);
 
   const open = (obj = null) => {
-    // console.log(obj);
+    setClicks((prevClick) => {
+      return prevClick + 1;
+    });
+
     if (!obj) {
       setChatOpen(false);
       return;
@@ -26,6 +31,7 @@ const ChatContextProvider = (props) => {
         openChat: open,
         chatStarted: chatOpen,
         talkingTo: talkTo,
+        clicks: clicks,
       }}
     >
       {props.children}
