@@ -2,9 +2,9 @@ export const title = "The 3 Stripes Hotel ";
 
 export const DYUMMY_DATA = [
   {
+    name: "Tito",
     key: 1,
     user: "😐",
-    name: "Tito",
     theme: {
       first: "rgb(211, 228, 21)",
       second: "white",
@@ -14,8 +14,8 @@ export const DYUMMY_DATA = [
   },
   {
     key: 2,
-    user: "🙄",
     name: "Pele",
+    user: "🙄",
     theme: {
       first: "rgb(5, 255, 217)",
       second: "rgb(255, 255, 255)",
@@ -24,7 +24,7 @@ export const DYUMMY_DATA = [
     },
   },
   {
-    key: 12,
+    key: 3,
     user: "💀",
     name: "Marlon",
     theme: {
@@ -35,7 +35,7 @@ export const DYUMMY_DATA = [
     },
   },
   {
-    key: 13,
+    key: 4,
     user: "😏",
     name: "Roony",
     theme: {
@@ -46,7 +46,7 @@ export const DYUMMY_DATA = [
     },
   },
   {
-    key: 14,
+    key: 5,
     user: "😀",
     name: "kaka",
     theme: {
@@ -57,7 +57,7 @@ export const DYUMMY_DATA = [
     },
   },
   {
-    key: 15,
+    key: 6,
     user: "👻",
     name: "Toti",
     theme: {
@@ -68,7 +68,7 @@ export const DYUMMY_DATA = [
     },
   },
   {
-    key: 16,
+    key: 7,
     user: "😁",
     name: "Pibe",
     theme: {
@@ -79,18 +79,18 @@ export const DYUMMY_DATA = [
     },
   },
   {
-    key: 17,
+    key: 8,
     user: "🙂",
     name: "Piojo",
     theme: {
-      first: "rgb(0, 100, 0)",
-      second: "rgb(0, 4, 5)",
+      first: "rgb(22 88 115)",
+      second: "rgb(176 176 176)",
       third: "white",
       fourth: "rgb(16, 42, 45)",
     },
   },
   {
-    key: 18,
+    key: 9,
     user: "🤨",
     name: "Tren",
     theme: {
@@ -101,12 +101,12 @@ export const DYUMMY_DATA = [
     },
   },
   {
-    key: 19,
+    key: 10,
     user: "😑",
     name: "Chicho",
     theme: {
       first: "rgb(103, 78, 78)",
-      second: "rgb(0, 4, 5)",
+      second: "rgb(174 152 153)",
       third: "white",
       fourth: "rgb(16, 42, 45)",
     },

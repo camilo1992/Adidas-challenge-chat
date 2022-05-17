@@ -1,75 +1,67 @@
-import React, { useState, useContext, useRef } from "react";
+import React, { useState, useContext, useRef, useEffect } from "react";
 import classes from "./PublicChat.module.css";
 import { ProfileContext } from "../../store/Profile.context";
 import { ChatContext } from "../../store/Chat.context";
 import Message from "./Message";
 import ChatForm from "../../helpers/ChatForm";
-// import { getDocs,query, orderBy  } from "firebase/firestore";
-
 import { colRef } from "../../index.js";
 import { addDoc, Timestamp, onSnapshot } from "firebase/firestore";
-
-//  authentincatin anonimouslly
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 function PublicChat() {
   const chatCtx = useContext(ChatContext);
   const proCtx = useContext(ProfileContext);
   const messageRef = useRef();
+  const scrollTagRef = useRef();
 
   const [displayMessage, setDisplayMessage] = useState([]);
-  const [userId, setUserId] = useState("66FIq69nhybu0seJESUSJlLA6KF2");
+  const [userId, setUserId] = useState();
 
   // Extract auth obj
-  const auth = getAuth();
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      // console.log(user.uid);
-      setUserId(user.uid);
-    } else {
-      console.log("singged out");
-    }
-  });
-
-  onSnapshot(colRef, (snapshot) => {
-    const messages = [];
-
-    snapshot.forEach((doc) => {
-      let {
-        message,
-        author: { user },
-        createdAt: { seconds },
-      } = doc.data();
-      messages.push({
-        message: message,
-        user: user,
-        time: seconds,
-        userId: doc.data().userId,
-      });
+  useEffect(() => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUserId(user.uid);
+      } else {
+        console.log("singged out");
+      }
     });
+  }, []);
 
-    messages.sort((a, b) => a.time - b.time);
-    // console.log(messages[0]);
+  useEffect(() => {
+    onSnapshot(colRef, (snapshot) => {
+      const messages = [];
 
-    setDisplayMessage(messages);
-    // console.log(messages);
-  });
+      snapshot.forEach((doc) => {
+        let {
+          message,
+          author: { user, name },
+          createdAt: { seconds },
+        } = doc.data();
 
-  const messageHandler = (e) => {
-    e.preventDefault();
+        messages.push({
+          message: message,
+          user: user,
+          name: name,
+          time: seconds,
+          userId: doc.data().userId,
+        });
+      });
 
-    addDoc(colRef, {
-      message: messageRef.current.value,
+      messages.sort((a, b) => a.time - b.time);
+      setDisplayMessage(messages);
+    });
+  }, []);
+
+  const connecUser = () => {
+    addDoc(connectedRef, {
+      // message: messageRef.current.value,
       author: { ...proCtx.profileSelected },
       createdAt: Timestamp.now(),
       userId: userId,
     });
-
-    // set text area to empty
-    messageRef.current.value = "";
   };
-
-  // console.log(displayMessage);
   return (
     <div className={classes.publicChatContainer}>
       <div
@@ -88,9 +80,12 @@ function PublicChat() {
               }
               key={Math.random() * 1}
               user={msg.user}
+              name={msg.name ? msg.name : proCtx.profileSelected.name}
               message={msg.message}
             />
           ))}
+
+          <span ref={scrollTagRef}></span>
         </div>
         <ChatForm
           form={classes.form}

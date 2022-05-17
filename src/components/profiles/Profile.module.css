@@ -17,6 +17,8 @@
     var(--second-colour)
   );
   border-radius: 10px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
   opacity: 0.8;
   animation: appear 2s ease-out;
 }

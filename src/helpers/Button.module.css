@@ -12,6 +12,7 @@
   width: 100%;
   font-size: 100%;
   border: none;
+  text-align: center;
 }
 
 .button:hover {

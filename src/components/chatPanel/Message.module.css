@@ -1,26 +1,33 @@
 .profileContainer {
-  content: icon;
   margin: 0;
-  width: 8%;
-  height: 100%;
+  width: 10%;
+  height: 120%;
   align-items: center;
-  /* border-left: 10px;
-  border-color: black;
-  border-left-width: 10px; */
+  /* background-color: yellow; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Audiowide", cursive;
+}
+.name {
+  font-size: 13px;
 }
 
 .profile {
   border-radius: 50%;
   height: 90%;
   width: 90%;
+  font-size: 30px;
 }
 
 .message {
-  height: 90%;
+  margin: 18px;
+  height: 100%;
   width: 100%;
   font-family: "Audiowide", cursive;
   font-size: 90%;
   resize: vertical;
-  color: burlywood;
+  color: black;
   word-wrap: break-word;
 }

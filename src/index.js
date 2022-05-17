@@ -10,6 +10,8 @@ import { getFirestore } from "firebase/firestore"; // This function inililizes t
 import { collection } from "firebase/firestore"; // This function creates a ref with an specific collection on the database
 import { getDocs } from "firebase/firestore"; // collects the collection in a variable
 // import { onSnapshot } from "firebase/firestore"; // Update realtime data...
+import { addDoc } from "firebase/firestore"; // creates new doc ---
+import { Timestamp } from "firebase/firestore"; // keeps a record o the created document time ---
 
 import { getAuth, signInAnonymously } from "firebase/auth";
 
@@ -28,12 +30,15 @@ const firebaseConfig = {
 initializeApp(firebaseConfig);
 // 2. Initialize firestore
 // now we can use db to reache database from the backend
-const db = getFirestore();
+export const db = getFirestore();
+
 // 3. Gete a reference to our specific collection.
 // first arg ---> database extracted in step 3
 // second arg ---> name of the collection
 export const colRef = collection(db, "messages");
+export const connectedRef = collection(db, "connected");
 // 4. collect collection  ---> it is represented in an array with every document within the db
+
 getDocs(colRef)
   .then((snapshot) => {
     const messages = [];
@@ -78,10 +83,56 @@ getDocs(colRef)
 //  if the user leaves the page ... it will be signed out
 const authObj = getAuth();
 signInAnonymously(authObj)
-  .then((res) => {})
+  .then((res) => {
+    // create a collection for wevery authenticated user....
+    // this will allow us to store  private chats with every connected user....
+    // creatting a collection for every user which will contain differtent documents for every private chat...
+    console.log(res);
+    if (res.operationType === "signIn") {
+      console.log("user aready exist");
+      // If there is already an anonymous user signed in,
+      //  that user will be returned; otherwise, a new anonymous user identity will be created and returned.
+      // and a new collection will be created to
+      return;
+    }
+    console.log(res.operationType === "signIn");
+    // in case user does not exists a new collection will be created
+    createNewCollection(res.user.uid);
+  })
   .catch((err) => {
     alert(err.message);
   });
+
+// ////////////////////////////////////////////////////////////////////////
+
+// create a new collection
+// import { collection, addDoc } from "firebase/firestore";
+
+const createNewCollection = async (collectionName) => {
+  try {
+    const docRef = await addDoc(collection(db, collectionName), {
+      message: "Second message",
+      talkingTo: "xxxxxx",
+      time: "doc.data().userId",
+      userId: collectionName,
+    });
+    console.log("Document written with ID: ", docRef.id);
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
+};
+
+const connectUser = () => {
+  addDoc(colRef, {
+    message: messageRef.current.value,
+    author: { ...proCtx.profileSelected },
+    createdAt: Timestamp.now(),
+    userId: userId,
+  });
+
+  scrollTagRef.current.scrollIntoView({ behavior: "smooth" });
+  messageRef.current.value = "";
+};
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

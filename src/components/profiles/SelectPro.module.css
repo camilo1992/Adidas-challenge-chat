@@ -6,7 +6,7 @@
   align-items: center;
   position: relative;
   top: 26vh;
-  left: 550px;
+  left: 730px;
 }
 
 .fade {
@@ -25,16 +25,27 @@
 .intro,
 .intro2 {
   margin-top: 55px;
-  margin-left: 450px;
+  margin-left: 520px;
   font-size: 18px;
   position: absolute;
   font-family: "Audiowide", cursive;
 }
 
 .intro2 {
-  margin-top: 340px;
-  margin-left: 620px;
+  margin-top: 390px;
+  margin-left: 660px;
   font-size: 22px;
+}
+
+.changeName {
+  text-align: center;
+  height: 140%;
+  width: 30%;
+  font-size: 20px;
+  margin-right: 10px;
+  font-family: "Audiowide", cursive;
+  color: var(--first-colour);
+  border-radius: 5px;
 }
 
 @keyframes close {

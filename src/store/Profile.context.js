@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { DYUMMY_DATA } from "../helpers/data";
 
 export const ProfileContext = React.createContext({
   isProfileSelected: false,
   name: "",
   profileSelected: {},
   onClick: () => {},
+  onChangeName: () => {},
 });
 
 // /////////////////////////////////////////////////////////////////////////////////////
@@ -27,7 +29,6 @@ const ProfileContextProvider = (props) => {
 
   const click = (obj = null, chat = false) => {
     if (obj) {
-      // Update current profile
       setCurrentProfile(obj);
     } else if (chat) {
       // Move to chat with a default profile
@@ -37,12 +38,21 @@ const ProfileContextProvider = (props) => {
     }
   };
 
+  const changeName = (chosenName) => {
+    // take current profile and modify name.....
+
+    setCurrentProfile((current) => {
+      return { ...current, name: chosenName };
+    });
+  };
+
   return (
     <ProfileContext.Provider
       value={{
         isProfileSelected: clicked,
         onClick: click,
         profileSelected: currentProfile,
+        onChangeName: changeName,
       }}
     >
       {props.children}

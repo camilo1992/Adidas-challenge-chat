@@ -20,11 +20,11 @@ p {
     var(--second-colour)
   );
   height: 72.5vh;
-  width: 30%;
+  width: 32%;
 
   position: relative;
-  left: 840px;
-  top: -114.5vh;
+  left: 1050px;
+  top: -111.5vh;
   right: 0;
   margin: 0;
   display: flex;
@@ -34,7 +34,7 @@ p {
   opacity: 0.9;
 
   z-index: 99;
-  animation: shrink 1s ease-out;
+  animation: shrink 0.4s ease-out;
 }
 
 .screen {
@@ -59,7 +59,7 @@ p {
   font-family: "Audiowide", cursive;
   color: var(--first-colour);
   margin-left: 3%;
-  width: 95%;
+  width: 94%;
   height: 72%;
   position: relative;
   top: 2vh;
