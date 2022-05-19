@@ -8,14 +8,13 @@ import ChatContextProvider from "./store/Chat.context";
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore"; // This function inililizes the service
 import { collection } from "firebase/firestore"; // This function creates a ref with an specific collection on the database
-import { getDocs } from "firebase/firestore"; // collects the collection in a variable
+// import { getDocs } from "firebase/firestore"; // collects the collection in a variable
 // import { onSnapshot } from "firebase/firestore"; // Update realtime data...
-import { addDoc } from "firebase/firestore"; // creates new doc ---
-
+// import { addDoc } from "firebase/firestore"; // creates new doc ---
 import { getAuth, signInAnonymously } from "firebase/auth";
 
-export let userId;
-console.log(userId);
+import { onAuthStateChanged } from "firebase/auth";
+import { doc, setDoc, Timestamp } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDDJgLSWv46iSTDLQI6rgxEQEhQt0vJdYo",
@@ -37,43 +36,21 @@ export const db = getFirestore();
 // second arg ---> name of the collection
 export const colRef = collection(db, "messages");
 export const connectedRef = collection(db, "connected");
+export let messagestedRef;
+
+// const messageRef = doc(db, "rooms", "roomA", "messages", "message1");
+// console.log(messagestedRef);
+
 // 4. collect collection  ---> it is represented in an array with every document within the db
 
-getDocs(colRef)
-  .then((snapshot) => {
-    const messages = [];
-    snapshot.docs.forEach((doc) => {
-      messages.push({ ...doc.data(), id: doc.id });
-    });
-  })
-  .catch((err) => {
-    alert(err.message);
-    console.log(err.message);
-  });
-
-// authenticatting anonimouslly...
-//  This is gonna help us display a message as a own...
-//  if the user leaves the page ... it will be signed out
+//5. authenticatting anonimouslly...
+// helps distinguish between sent and recieved msgs
 const authObj = getAuth();
+
 signInAnonymously(authObj)
   .then((res) => {
-    // create a collection for wevery authenticated user....
-    // this will allow us to store  private chats with every connected user....
-    // creatting a collection for every user which will contain differtent documents for every private chat...
-    console.log(res);
-    userId = res.userId;
-    if (res.operationType === "signIn") {
-      console.log("user aready exist");
-      // If there is already an anonymous user signed in,
-      //  that user will be returned; otherwise, a new anonymous user identity will be created and returned.
-      // and a new collection will be created to
-      return;
-    }
-    console.log(res.operationType === "signIn");
-    // A NEW COLLECTION FOR EVERY USER.
-    // IT WILL BE UPDATED WHEN IT STARTS OFF A PRIVATE CHAT
-    createNewCollection(res.user.uid);
-    userId = res.user.uid;
+    console.log(res.operationType);
+    console.log("user is authenticated");
   })
   .catch((err) => {
     alert(err.message);
@@ -81,18 +58,19 @@ signInAnonymously(authObj)
 
 // ////////////////////////////////////////////////////////////////////////
 
-const createNewCollection = async (collectionName) => {
+export const connectUserAndcreateDocument = async (proCtx, userId) => {
   try {
-    const docRef = await addDoc(collection(db, collectionName), {
-      message: "Second message",
-      talkingTo: "xxxxxx",
-      time: "timeStamp",
-      userId: collectionName,
+    const res = await setDoc(doc(db, "connected", userId), {
+      author: { ...proCtx.profileSelected },
+      connecteddAt: Timestamp.now(),
+      userId: userId,
     });
-    console.log("Document written with ID: ", docRef.id);
-  } catch (e) {
-    console.error("Error adding document: ", e);
+  } catch (err) {
+    console.log(err.message);
   }
+
+  messagestedRef = collection(db, "connected", userId, "private-chats");
+  // messagestedRef = doc(db, "connected", userId, "private-chats");
 };
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

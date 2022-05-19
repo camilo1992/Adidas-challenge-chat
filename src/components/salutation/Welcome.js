@@ -1,35 +1,19 @@
 import classes from "./Welcome.module.css";
+import "../../App.css";
 import Button from "../../helpers/Button";
 import { ProfileContext } from "../../store/Profile.context";
 import { useContext } from "react";
-import "../../App.css";
 import { ChatContext } from "../../store/Chat.context";
-import { Timestamp, addDoc } from "firebase/firestore";
-import { connectedRef } from "../../index";
+// import { getAuth } from "firebase/auth"
+// import { doc, setDoc, Timestamp } from "firebase/firestore";
 
 function Welcome(props) {
   const proCtx = useContext(ProfileContext);
   const chatCtx = useContext(ChatContext);
-  const { clicks } = chatCtx;
 
   const handleClick = () => {
     proCtx.onClick(null, true);
     chatCtx.openChat();
-    if (clicks === 0) {
-      connectUser();
-    }
-  };
-  // it canbe send just once for every session....
-
-  // CONNECT USER
-  const connectUser = () => {
-    addDoc(connectedRef, {
-      author: { ...proCtx.profileSelected },
-      connecteddAt: Timestamp.now(),
-      name: proCtx.profileSelected.name,
-      user: proCtx.profileSelected.user,
-      // userId: userId,
-    });
   };
 
   return (

@@ -7,9 +7,11 @@ import ChatForm from "../../helpers/ChatForm";
 import { colRef } from "../../index.js";
 import { addDoc, Timestamp, onSnapshot } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { connectUserAndcreateDocument } from "../../index.js";
 
 function PublicChat() {
   const chatCtx = useContext(ChatContext);
+  const { clicks } = chatCtx;
   const proCtx = useContext(ProfileContext);
   const messageRef = useRef();
   const scrollTagRef = useRef();
@@ -17,14 +19,24 @@ function PublicChat() {
   const [displayMessage, setDisplayMessage] = useState([]);
   const [userId, setUserId] = useState();
 
-  // Extract auth obj
   useEffect(() => {
+    // Distinguish betweeen recieved and sent messages setUserId
+    // Create and desplay as connected
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setUserId(user.uid);
+        console.log(user.uid, " User is  authenticated");
+
+        // create doc to store private chats
+        if (clicks === 1) {
+          connectUserAndcreateDocument(proCtx, user.uid);
+        }
       } else {
-        console.log("singged out");
+        console.log(
+          "This means the user is not authenticated anymore, so it is logged out ",
+          user
+        );
       }
     });
   }, []);

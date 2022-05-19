@@ -11,26 +11,29 @@ function Profile() {
   const [connectedUsers, setConnectedUsers] = useState([]);
 
   useEffect(() => {
-    // UPDATES CONNECTED CHAT ON THE UI....
     onSnapshot(connectedRef, (snapshot) => {
       const usersConnectedNow = [];
-
       snapshot.forEach((doc) => {
-        usersConnectedNow.push({ ...doc.data() });
+        let { author, userId } = doc.data();
+        usersConnectedNow.push({ author, userId });
       });
+
+      // slice array so that we do not display our own avatar.
       setConnectedUsers(usersConnectedNow);
     });
   }, []);
 
   const handleChatStarted = (e) => {
-    // OPEnS PRIVATE CHAT
+    // console.log(e.target, "clicked");
+    // Starting Chat
     const talking = connectedUsers.find((element) => {
-      return element.name === e.target.textContent;
+      return element.author.name === e.target.textContent;
     });
 
     if (!talking) {
       return;
     }
+    console.log(talking);
     chatCtx.openChat(talking);
   };
 
@@ -41,8 +44,8 @@ function Profile() {
           <User
             onClick={handleChatStarted}
             key={Math.random() * 1}
-            user={el.user}
-            name={el.name}
+            user={el.author.user}
+            name={el.author.name}
           />
         );
       })}

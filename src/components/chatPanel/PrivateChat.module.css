@@ -44,6 +44,50 @@ p {
   background-color: var(--second-colour);
   margin: auto;
   border-radius: 5px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.screen::-webkit-scrollbar {
+  display: none;
+}
+
+.messageContainerSent {
+  font-size: 20px;
+  margin: 0;
+  margin-bottom: 15px;
+  margin-right: 0px;
+  margin-top: 3px;
+  display: flex;
+  width: 80%;
+  height: 14%;
+  position: relative;
+
+  /* text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15); */
+  /* box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15); */
+
+  text-align: right;
+  left: 16%;
+}
+
+.messageContainerRecieved {
+  margin: 0;
+  margin-bottom: 15px;
+  margin-right: 0px;
+  margin-top: 3px;
+  display: flex;
+  width: 80%;
+  height: 14%;
+  position: relative;
+
+  /* text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15); */
+  /* box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15); */
+
+  text-align: left;
+  left: 5%;
+  flex-direction: row-reverse;
+  font-size: 20px;
 }
 
 .buttonContainer {

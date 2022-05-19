@@ -2,6 +2,7 @@ export const title = "The 3 Stripes Hotel ";
 
 export const DYUMMY_DATA = [
   {
+    key: 1,
     user: "😐",
     theme: {
       first: "rgb(211, 228, 21)",

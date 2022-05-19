@@ -26,12 +26,16 @@ const ProfileContextProvider = (props) => {
   const [currentProfile, setCurrentProfile] = useState(defaultProfile);
 
   const click = (obj = null, chat = false) => {
-    if (obj) {
+    if (obj && !chat) {
       setCurrentProfile(obj);
-    } else if (chat) {
+    } else if (chat && !obj) {
       // Move to chat with a default profile
       setClicked((prev) => {
         return !prev;
+      });
+    } else if (obj && chat) {
+      setCurrentProfile((prev) => {
+        return { ...prev, ...obj };
       });
     }
   };
