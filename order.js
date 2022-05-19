@@ -35,3 +35,15 @@
 //     }
 //   };
 // };
+
+// ////////////////////////////////////////////////////////
+
+// setChatOpen(true);
+// setTalkTo((prev) => {
+//   return { ...prev, ...obj };
+// });
+
+// messagestedRef = collection(db, "connected", userId, "private-chats");
+// return (userIdTalkingTo) => {
+//   collection(db, "connected", userIdTalkingTo, "private-chats");
+// };

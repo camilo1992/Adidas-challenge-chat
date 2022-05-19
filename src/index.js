@@ -37,6 +37,7 @@ export const db = getFirestore();
 export const colRef = collection(db, "messages");
 export const connectedRef = collection(db, "connected");
 export let messagestedRef;
+export let privateSentToRef;
 
 // const messageRef = doc(db, "rooms", "roomA", "messages", "message1");
 // console.log(messagestedRef);
@@ -58,19 +59,32 @@ signInAnonymously(authObj)
 
 // ////////////////////////////////////////////////////////////////////////
 
-export const connectUserAndcreateDocument = async (proCtx, userId) => {
-  try {
-    const res = await setDoc(doc(db, "connected", userId), {
-      author: { ...proCtx.profileSelected },
-      connecteddAt: Timestamp.now(),
-      userId: userId,
-    });
-  } catch (err) {
-    console.log(err.message);
+export const connectUserAndcreateDocument = async (
+  talkingToId = null,
+  proCtx,
+  userId
+) => {
+  if (proCtx && userId) {
+    try {
+      await setDoc(doc(db, "connected", userId), {
+        author: { ...proCtx.profileSelected },
+        connecteddAt: Timestamp.now(),
+        userId: userId,
+      });
+    } catch (err) {
+      console.log(err.message);
+    }
+    messagestedRef = collection(db, "connected", userId, "private-chats");
   }
 
-  messagestedRef = collection(db, "connected", userId, "private-chats");
-  // messagestedRef = doc(db, "connected", userId, "private-chats");
+  if (talkingToId) {
+    privateSentToRef = collection(
+      db,
+      "connected",
+      talkingToId,
+      "private-chats"
+    );
+  }
 };
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

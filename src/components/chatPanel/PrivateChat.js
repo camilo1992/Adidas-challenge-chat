@@ -6,6 +6,7 @@ import { ProfileContext } from "../../store/Profile.context";
 import ChatForm from "../../helpers/ChatForm";
 import Message from "./Message";
 import { messagestedRef } from "../../index.js";
+import { privateSentToRef } from "../../index.js";
 import { addDoc, onSnapshot, Timestamp } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
@@ -38,15 +39,24 @@ function PrivateChat() {
 
   const messageHandler = (e) => {
     e.preventDefault();
+    const talkingToref = chatCtx.talkingTo.userId;
+    const talkingFromRef = userId;
 
     addDoc(messagestedRef, {
+      talkingTo: talkingToref,
       message: messageRef.current.value,
-      talkingTo: chatCtx.talkingTo.userId,
       time: Timestamp.now(),
       user: proCtx.profileSelected.user,
     });
 
-    // scrollTagRef.current.scrollIntoView({ behavior: "smooth" });
+    addDoc(privateSentToRef, {
+      talkingTo: talkingFromRef,
+      message: messageRef.current.value,
+      time: Timestamp.now(),
+      user: proCtx.profileSelected.user,
+    });
+
+    scrollTagRef.current.scrollIntoView({ behavior: "smooth" });
     messageRef.current.value = "";
   };
 
@@ -76,7 +86,7 @@ function PrivateChat() {
       setDisplayMessage(messages);
     });
   }, [chatCtx.talkingTo.userId]);
-  console.log(displayMessage);
+  // console.log(displayMessage);
   return (
     <div className={classes.privateChatContainer}>
       <div className={classes.privateChat}>

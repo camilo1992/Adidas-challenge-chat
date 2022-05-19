@@ -30,7 +30,9 @@ function PublicChat() {
 
         // create doc to store private chats
         if (clicks === 1) {
-          connectUserAndcreateDocument(proCtx, user.uid);
+          connectUserAndcreateDocument(null, proCtx, user.uid);
+          // chatCtx.openChat(null, createPriavateRefCollection);
+          // console.log(createPriavateRefCollection);
         }
       } else {
         console.log(

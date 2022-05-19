@@ -4,8 +4,9 @@ import User from "./User";
 import { useContext } from "react";
 import { ChatContext } from "../../store/Chat.context";
 import { onSnapshot } from "firebase/firestore";
-import { connectedRef } from "../../index.js";
+import { connectedRef, connectUserAndcreateDocument } from "../../index.js";
 import { ProfileContext } from "../../store/Profile.context";
+
 function Profile() {
   const chatCtx = useContext(ChatContext);
   const protCtx = useContext(ProfileContext);
@@ -37,10 +38,15 @@ function Profile() {
     if (talking.author.name === protCtx.profileSelected.name) {
       return;
     }
-    console.log(talking);
+    // console.log(talking.userId);
+    // let { userId } = talking;
+
     chatCtx.openChat(talking);
+    // create second ref .......
+    connectUserAndcreateDocument(talking.userId);
   };
 
+  // console.log(connectedUsers);
   return (
     <div id={classes.profileContainer}>
       {connectedUsers.map((el) => {
