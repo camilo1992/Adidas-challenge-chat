@@ -43,7 +43,7 @@ function PrivateChat() {
       message: messageRef.current.value,
       talkingTo: chatCtx.talkingTo.userId,
       time: Timestamp.now(),
-      // from: proCtx.author.user,
+      user: proCtx.profileSelected.user,
     });
 
     // scrollTagRef.current.scrollIntoView({ behavior: "smooth" });
@@ -59,12 +59,13 @@ function PrivateChat() {
           message,
           talkingTo,
           time: { seconds },
+          user,
         } = doc.data();
 
         if (talkingTo === chatCtx.talkingTo.userId) {
           messages.push({
             message: message,
-            user: chatCtx.talkingTo.user,
+            user: user,
             name: chatCtx.talkingTo.name,
             time: seconds,
           });
@@ -75,7 +76,7 @@ function PrivateChat() {
       setDisplayMessage(messages);
     });
   }, [chatCtx.talkingTo.userId]);
-
+  console.log(displayMessage);
   return (
     <div className={classes.privateChatContainer}>
       <div className={classes.privateChat}>

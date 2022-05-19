@@ -91,6 +91,7 @@ p {
 }
 
 .buttonContainer {
+  border-radius: 29px;
   height: 30%;
   position: relative;
   width: 14%;

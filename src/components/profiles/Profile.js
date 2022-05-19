@@ -5,9 +5,10 @@ import { useContext } from "react";
 import { ChatContext } from "../../store/Chat.context";
 import { onSnapshot } from "firebase/firestore";
 import { connectedRef } from "../../index.js";
-
+import { ProfileContext } from "../../store/Profile.context";
 function Profile() {
   const chatCtx = useContext(ChatContext);
+  const protCtx = useContext(ProfileContext);
   const [connectedUsers, setConnectedUsers] = useState([]);
 
   useEffect(() => {
@@ -31,6 +32,9 @@ function Profile() {
     });
 
     if (!talking) {
+      return;
+    }
+    if (talking.author.name === protCtx.profileSelected.name) {
       return;
     }
     console.log(talking);

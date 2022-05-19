@@ -30,6 +30,8 @@
     var(--fourth-colour),
     var(--second-colour)
   );
+
+  box-shadow: 40px 40px 10px;
 }
 
 .animationContainer li:nth-child(1) {

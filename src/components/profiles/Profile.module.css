@@ -21,6 +21,8 @@
   border-bottom-right-radius: 0;
   opacity: 0.8;
   animation: appear 2s ease-out;
+
+  /* box-shadow: 15px 15px 10px; */
 }
 
 @keyframes appear {
