@@ -40,7 +40,7 @@ function Profile() {
     }
     // console.log(talking.userId);
     // let { userId } = talking;
-
+    console.log(talking);
     chatCtx.openChat(talking);
     // create second ref .......
     connectUserAndcreateDocument(talking.userId);

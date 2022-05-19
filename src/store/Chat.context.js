@@ -11,19 +11,16 @@ const ChatContextProvider = (props) => {
   const [chatOpen, setChatOpen] = useState(false);
   const [talkTo, setTalkTo] = useState({});
   const [clicks, setClicks] = useState(0);
-  const [ref, setRef] = useState();
 
-  const open = (obj = null, funcRef = null) => {
+  const open = (obj = null) => {
     setClicks((prevClick) => {
       return prevClick + 1;
     });
 
-    !obj && !funcRef && setChatOpen(false);
-
-    obj && !funcRef && setChatOpen(true);
-    obj && !funcRef && setTalkTo(obj);
-
-    !obj && funcRef && setRef(funcRef);
+    !obj && setChatOpen(false);
+    obj && setChatOpen(true);
+    obj && setTalkTo(obj);
+    console.log(obj);
   };
 
   return (
@@ -33,7 +30,6 @@ const ChatContextProvider = (props) => {
         chatStarted: chatOpen,
         talkingTo: talkTo,
         clicks: clicks,
-        createRef: ref,
       }}
     >
       {props.children}

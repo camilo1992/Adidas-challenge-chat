@@ -1,12 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import classes from "./PrivateChat.module.css";
-import { useContext } from "react";
 import { ChatContext } from "../../store/Chat.context";
 import { ProfileContext } from "../../store/Profile.context";
 import ChatForm from "../../helpers/ChatForm";
 import Message from "./Message";
-import { messagestedRef } from "../../index.js";
-import { privateSentToRef } from "../../index.js";
+import { messagestedRef, privateSentToRef } from "../../index.js";
 import { addDoc, onSnapshot, Timestamp } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
@@ -16,18 +14,14 @@ function PrivateChat() {
   const chatCtx = useContext(ChatContext);
   const proCtx = useContext(ProfileContext);
   const [displayMessage, setDisplayMessage] = useState([]);
-  const [userId, setUserId] = useState();
+  const [userAuthId, setUserAuthId] = useState();
 
   useEffect(() => {
-    // Distinguish betweeen recieved and sent messages setUserId
-    // Create and desplay as connected
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        setUserId(user.uid);
+        setUserAuthId(user.uid);
         console.log(user.uid, " User is  authenticated");
-
-        // create doc to store private chats
       } else {
         console.log(
           "This means the user is not authenticated anymore, so it is logged out ",
@@ -40,17 +34,19 @@ function PrivateChat() {
   const messageHandler = (e) => {
     e.preventDefault();
     const talkingToref = chatCtx.talkingTo.userId;
-    const talkingFromRef = userId;
+    const talkingFromRef = userAuthId;
 
     addDoc(messagestedRef, {
-      talkingTo: talkingToref,
+      from: userAuthId,
+      to: chatCtx.talkingTo.userId,
       message: messageRef.current.value,
       time: Timestamp.now(),
       user: proCtx.profileSelected.user,
     });
 
     addDoc(privateSentToRef, {
-      talkingTo: talkingFromRef,
+      from: userAuthId,
+      to: chatCtx.talkingTo.userId,
       message: messageRef.current.value,
       time: Timestamp.now(),
       user: proCtx.profileSelected.user,
@@ -65,19 +61,27 @@ function PrivateChat() {
       const messages = [];
 
       snapshot.forEach((doc) => {
-        let {
-          message,
-          talkingTo,
-          time: { seconds },
-          user,
-        } = doc.data();
-
-        if (talkingTo === chatCtx.talkingTo.userId) {
+        let { message, user, from, to } = doc.data();
+        console.log(doc.data());
+        // if (from === userAuthId) {
+        if (to === chatCtx.talkingTo.userId) {
           messages.push({
+            from: from,
             message: message,
             user: user,
             name: chatCtx.talkingTo.name,
-            time: seconds,
+            time: doc.data().time.seconds,
+            talkingTo: doc.data().from,
+          });
+        }
+        if (from === chatCtx.talkingTo.userId) {
+          messages.push({
+            from: from,
+            message: message,
+            user: user,
+            name: chatCtx.talkingTo.name,
+            time: doc.data().time.seconds,
+            talkingTo: doc.data().from,
           });
         }
       });
@@ -86,7 +90,7 @@ function PrivateChat() {
       setDisplayMessage(messages);
     });
   }, [chatCtx.talkingTo.userId]);
-  // console.log(displayMessage);
+  console.log(displayMessage);
   return (
     <div className={classes.privateChatContainer}>
       <div className={classes.privateChat}>
@@ -95,13 +99,13 @@ function PrivateChat() {
           {displayMessage.map((msg) => (
             <Message
               className={
-                userId === msg.userId
-                  ? classes["messageContainerRecieved"]
-                  : classes["messageContainerSent"]
+                userAuthId === msg.from
+                  ? classes["messageContainerSent"]
+                  : classes["messageContainerRecieved"]
               }
               key={Math.random() * 1}
               user={msg.user}
-              name={msg.name ? msg.name : proCtx.profileSelected.name}
+              name={msg.name}
               message={msg.message}
             />
           ))}
