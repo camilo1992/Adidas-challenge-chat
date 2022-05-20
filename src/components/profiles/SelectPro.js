@@ -34,6 +34,10 @@ function SelectPro() {
     // UPDATE NAME IN UI
     setName(e.target.value);
     // UPDATE USER CONTEXT
+    if (e.target.value.trim() === "") {
+      proCtx.onChangeName(`nameless ${Math.round(Math.random() * 99)}`);
+      return;
+    }
     proCtx.onChangeName(e.target.value);
   };
 
