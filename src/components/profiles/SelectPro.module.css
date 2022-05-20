@@ -6,7 +6,7 @@
   align-items: center;
   position: relative;
   top: 26vh;
-  left: 730px;
+  left: 105vh;
 }
 
 .fade {
@@ -24,8 +24,8 @@
 
 .intro,
 .intro2 {
-  margin-top: 55px;
-  margin-left: 520px;
+  margin-top: 15vh;
+  margin-left: 75vh;
   font-size: 18px;
   position: absolute;
   font-family: "Audiowide", cursive;
@@ -33,7 +33,7 @@
 
 .intro2 {
   margin-top: 54vh;
-  margin-left: 660px;
+  margin-left: 88vh;
   font-size: 22px;
 }
 
