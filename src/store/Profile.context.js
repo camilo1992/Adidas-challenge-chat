@@ -12,7 +12,7 @@ export const ProfileContext = React.createContext({
 const defaultProfile = {
   key: 17,
   user: "🙂",
-  name: "You",
+  name: `nameless ${Math.round(Math.random() * 99)}`,
   theme: {
     first: "rgb(0, 100, 0)",
     second: "rgb(0, 4, 5)",
@@ -27,7 +27,11 @@ const ProfileContextProvider = (props) => {
 
   const click = (obj = null, chat = false) => {
     if (obj && !chat) {
-      setCurrentProfile(obj);
+      setCurrentProfile((prev) => {
+        return { ...prev, ...obj };
+      });
+
+      // aca esta el pro ...blmea
     } else if (chat && !obj) {
       // Move to chat with a default profile
       setClicked((prev) => {

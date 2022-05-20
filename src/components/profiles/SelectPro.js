@@ -9,7 +9,7 @@ function SelectPro() {
   const proCtx = useContext(ProfileContext);
   const chatCtx = useContext(ChatContext);
   const { clicks } = chatCtx;
-  const [name, setName] = useState(`"You"`);
+  const [name, setName] = useState("");
 
   const selectPro = (a, b) => {
     document.documentElement.style.setProperty(a, b);
@@ -64,7 +64,7 @@ function SelectPro() {
         <p className={classes.intro2}>
           <input
             type="text"
-            placeholder={name !== "" ? name : `Name`}
+            placeholder={"Type name here"}
             className={classes.changeName}
             onChange={chageNameHandler}
           />
