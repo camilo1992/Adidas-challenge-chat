@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, {useContext, useEffect, useState } from "react";
 import classes from "./Profile.module.css";
 import User from "./User";
-import { useContext } from "react";
 import { ChatContext } from "../../store/Chat.context";
 import { onSnapshot } from "firebase/firestore";
 import { connectedRef, connectUserAndcreateDocument } from "../../index.js";
@@ -19,15 +18,12 @@ function Profile() {
         let { author, userId } = doc.data();
         usersConnectedNow.push({ author, userId });
       });
-
-      // slice array so that we do not display our own avatar.
       setConnectedUsers(usersConnectedNow);
     });
   }, []);
 
   const handleChatStarted = (e) => {
-    // console.log(e.target, "clicked");
-    // Starting Chat
+    // START CHAT
     const talking = connectedUsers.find((element) => {
       return element.author.name === e.target.textContent;
     });
@@ -38,15 +34,14 @@ function Profile() {
     if (talking.author.name === protCtx.profileSelected.name) {
       return;
     }
-    // console.log(talking.userId);
-    // let { userId } = talking;
-    console.log(talking);
     chatCtx.openChat(talking);
-    // create second ref .......
+    
+    
+    // CREATE SUBCOLLECTION REF .......
     connectUserAndcreateDocument(talking.userId);
   };
 
-  // console.log(connectedUsers);
+  
   return (
     <div id={classes.profileContainer}>
       {connectedUsers.map((el) => {

@@ -16,7 +16,7 @@ function SelectPro() {
   };
 
   const hanldeChangeTheme = (e) => {
-    // FIND USER SELECTED WHItIN THE USER POOL
+    // FIND USER SELECTED WIthIN THE USER POOL
     const ele = DYUMMY_DATA.find((element) => {
       return element.user === e.target.textContent;
     });

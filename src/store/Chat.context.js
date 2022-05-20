@@ -20,7 +20,6 @@ const ChatContextProvider = (props) => {
     !obj && setChatOpen(false);
     obj && setChatOpen(true);
     obj && setTalkTo(obj);
-    console.log(obj);
   };
 
   return (

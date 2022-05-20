@@ -24,6 +24,7 @@ const firebaseConfig = {
   messagingSenderId: "881268475110",
   appId: "1:881268475110:web:aebcaba713ce2731fd2727",
 };
+// variables de entorno
 
 // 1. connect app to fire base
 initializeApp(firebaseConfig);
@@ -37,7 +38,7 @@ export let messagestedRef;
 export let privateSentToRef;
 
 //5. authenticatting anonymously...
-const authObj = getAuth();
+export const authObj = getAuth();
 // 6. Sign up anonymously
 signInAnonymously(authObj)
   .then((res) => {
@@ -66,11 +67,6 @@ export const connectUserAndcreateDocument = async (
       console.log(err.message);
     }
     messagestedRef = collection(db, "connected", userId, "private-chats");
-    // Podiramos agregar un documento aca para inicair la colleccion ?
-    // addDoc(messagestedRef, {
-    //   message: "Inicio",
-    //   time: Timestamp.now(),
-    // });
   }
 
   if (talkingToId) {
@@ -85,13 +81,10 @@ export const connectUserAndcreateDocument = async (
 
 // /////////////////////////////////////////////
 // Helper function to log anonymous user out.
-// export const deleteDocWhenUserLogout = async (docName) => {
-//   await deleteDoc(doc(db, "connected", docName));
-// };
-// window.addEventListener("beforeunload", alertUser);
-// const alertUser = () => {
-//   alert("we are clossing");
-// };
+export const deleteDocWhenUserLogout = async (docName) => {
+  return deleteDoc(doc(db, "connected", docName));
+};
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
