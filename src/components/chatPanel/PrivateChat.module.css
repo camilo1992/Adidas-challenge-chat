@@ -1,3 +1,8 @@
+/* .privateChatContainer {
+  padding: 0;
+  margin: 0;
+} */
+
 p {
   font-size: 120%;
   margin: 0;
@@ -23,8 +28,8 @@ p {
   width: 32%;
 
   position: relative;
-  left: 1050px;
-  top: -111.5vh;
+  left: 1060px;
+  top: -170.5vh;
   right: 0;
   margin: 0;
   display: flex;

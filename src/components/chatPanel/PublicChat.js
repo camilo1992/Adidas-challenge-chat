@@ -82,7 +82,7 @@ function PublicChat() {
     messageRef.current.value = "";
   };
   return (
-    <div className={classes.publicChatContainer}>
+    <>
       <div
         className={
           !chatCtx.chatStarted ? classes.publicChat : classes.publicChat2
@@ -114,7 +114,7 @@ function PublicChat() {
           reference={messageRef}
         />
       </div>
-    </div>
+    </>
   );
 }
 

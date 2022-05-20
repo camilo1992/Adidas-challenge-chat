@@ -33,8 +33,6 @@ function PrivateChat() {
 
   const messageHandler = (e) => {
     e.preventDefault();
-    const talkingToref = chatCtx.talkingTo.userId;
-    const talkingFromRef = userAuthId;
 
     addDoc(messagestedRef, {
       from: userAuthId,
@@ -62,7 +60,7 @@ function PrivateChat() {
 
       snapshot.forEach((doc) => {
         let { message, user, from, to } = doc.data();
-        console.log(doc.data());
+
         // if (from === userAuthId) {
         if (to === chatCtx.talkingTo.userId) {
           messages.push({
@@ -90,9 +88,8 @@ function PrivateChat() {
       setDisplayMessage(messages);
     });
   }, [chatCtx.talkingTo.userId]);
-  console.log(displayMessage);
   return (
-    <div className={classes.privateChatContainer}>
+    <>
       <div className={classes.privateChat}>
         <p>Private chat ({chatCtx.talkingTo.author.name})</p>
         <div className={classes.screen}>
@@ -120,7 +117,7 @@ function PrivateChat() {
           reference={messageRef}
         />
       </div>
-    </div>
+    </>
   );
 }
 

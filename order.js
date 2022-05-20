@@ -1,3 +1,21 @@
+// import React from "react";
+// import ReactDOM from "react-dom/client";
+// import "./index.css";
+// import App from "./App";
+// import ProfileContextProvider from "./store/Profile.context";
+// import ChatContextProvider from "./store/Chat.context";
+// // Firebase 9 ---> allow us to import only the methods that we need from the service
+// import { initializeApp } from "firebase/app";
+// import { getFirestore } from "firebase/firestore"; // This function inililizes the service
+// import { collection } from "firebase/firestore"; // This function creates a ref with an specific collection on the database
+// // import { getDocs } from "firebase/firestore"; // collects the collection in a variable
+// // import { onSnapshot } from "firebase/firestore"; // Update realtime data...
+// import { addDoc } from "firebase/firestore"; // creates new doc ---
+// import { getAuth, signInAnonymously } from "firebase/auth";
+
+// // import { onAuthStateChanged } from "firebase/auth";
+// import { doc, setDoc, Timestamp,deleteDoc } from "firebase/firestore";
+
 // 5, create query
 
 // const q = query(colRef, orderBy("createdAt"));
@@ -17,6 +35,9 @@
 //   .catch((err) => {
 //     console.log(err.message);
 //   });
+
+// import { doc, deleteDoc } from "firebase/firestore";
+// await deleteDoc(doc(db, "cities", "DC"));
 
 // const createUserCollection = () => {
 //   const createNewCollection = async (collectionName) => {
