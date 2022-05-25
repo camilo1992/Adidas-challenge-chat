@@ -127,7 +127,9 @@ p {
     font-size: 1.4rem;
   }
   .screen {
-    width: 80vw;
+    width: 70vw;
+    height: 13vh;
+    margin: auto;
   }
   .messageContainerRecieved {
     height: 5vh;
@@ -135,6 +137,7 @@ p {
   .textArea {
     height: 8vh;
     font-size: 1.2rem;
+    width: 70vw;
   }
   .buttonContainer {
     top: -5.2vh;

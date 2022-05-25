@@ -177,6 +177,8 @@
   .textArea {
     height: 8vh;
     font-size: 1.2rem;
+
+    width: 70vw;
   }
   .buttonContainer {
     top: -5.2vh;
