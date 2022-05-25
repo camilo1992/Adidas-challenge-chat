@@ -15,13 +15,13 @@
 .welcome {
   font-family: "Audiowide", cursive;
   width: 100%;
-  height: 110px;
+  height: 20vh;
   color: var(--second-colour);
   padding: 0%;
   position: relative;
   text-align: center;
   top: 35vh;
-  font-size: 220%;
+  font-size: 5rem;
   background-color: var(--first-colour);
   background: linear-gradient(
     to left,
@@ -42,17 +42,18 @@ p {
     var(--second-colour)
   );
   position: relative;
-  width: 30%;
-  height: 40%;
+  width: 30vw;
+  height: 7vh;
   top: 38vh;
   text-align: right;
   left: 70.7%;
 }
 
 .welcome::before {
+  height: 8vh;
   color: var(--third-colour);
   content: "   ....Welcome to";
-  font-size: 2rem;
+  font-size: 3rem;
   text-align: left;
   background-color: var(--second-colour);
   display: block;
@@ -63,7 +64,23 @@ p {
     var(--second-colour)
   );
 }
+@media (max-width: 985px) {
+  .welcomeButton {
+    width: 18vw;
+    left: 83.7%;
+    height: 5rem;
+    z-index: 99;
+  }
+  .welcome {
+    font-size: 3rem;
+    height: 15vh;
+  }
 
+  .welcome::before {
+    font-size: 2.5rem;
+    height: 6vh;
+  }
+}
 @keyframes open {
   0% {
     opacity: 0;

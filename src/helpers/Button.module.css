@@ -10,11 +10,16 @@
   position: relative;
   height: 100%;
   width: 100%;
-  font-size: 100%;
+  font-size: 2rem;
   border: none;
   text-align: center;
 }
 
+@media (max-width: 985px) {
+  .button {
+    font-size: 1.2rem;
+  }
+}
 .button:hover {
   background-color: var(--first-colour);
   color: var(--fourth-colour);

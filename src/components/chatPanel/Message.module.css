@@ -11,14 +11,14 @@
   font-family: "Audiowide", cursive;
 }
 .name {
-  font-size: 13px;
+  font-size: 1.2rem;
 }
 
 .profile {
   border-radius: 50%;
   height: 90%;
   width: 90%;
-  font-size: 30px;
+  font-size: 3rem;
 }
 
 .message {
@@ -30,4 +30,13 @@
   resize: vertical;
   color: black;
   word-wrap: break-word;
+}
+
+@media (max-width: 985px) {
+  .name {
+    font-size: 0.8rem;
+  }
+  .profile {
+    font-size: 2rem;
+  }
 }

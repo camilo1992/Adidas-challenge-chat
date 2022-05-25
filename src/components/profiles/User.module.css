@@ -1,26 +1,30 @@
 .userContainer {
   background-color: white;
   opacity: 0.8;
-  height: 8%;
+  height: 10%;
   width: 80%;
   display: flex;
   justify-content: space-around;
   align-items: center;
   z-index: 99;
-  padding: 0%;
-  margin: 0%;
 }
 
 .user {
   border-radius: 50%;
   height: 80px;
   width: 80px;
-  font-size: 40px;
+  font-size: 4rem;
+}
+
+@media (max-width: 985px) {
+  .user {
+    font-size: 3rem;
+  }
 }
 
 .name {
   margin-top: auto;
-  font-size: 20px;
+  font-size: 2rem;
   font-family: "Audiowide", cursive;
 }
 
@@ -30,7 +34,3 @@
   cursor: grab;
   color: var(--third-colour);
 }
-
-/* .user:active {
-  font-size: 60px;
-} */

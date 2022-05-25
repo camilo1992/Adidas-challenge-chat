@@ -6,7 +6,7 @@
   align-items: center;
   position: relative;
   top: 26vh;
-  left: 105vh;
+  left: 45%;
 }
 
 .fade {
@@ -24,30 +24,48 @@
 
 .intro,
 .intro2 {
-  margin-top: 15vh;
-  margin-left: 75vh;
-  font-size: 18px;
+  margin-top: 13vh;
+  margin-left: 31vw;
+  font-size: 2rem;
   position: absolute;
   font-family: "Audiowide", cursive;
 }
 
 .intro2 {
-  margin-top: 56vh;
-  margin-left: 88vh;
-  font-size: 22px;
+  margin-top: 60vh;
+  margin-left: 32vw;
 }
 
 .changeName {
   text-align: center;
-  height: 140%;
-  width: 36%;
-  font-size: 20px;
-  margin-right: 10px;
+  height: 4vh;
+  width: 20vw;
+  font-size: 2rem;
+  margin-right: 2vw;
   font-family: "Audiowide", cursive;
   color: var(--first-colour);
   border-radius: 5px;
 }
 
+@media (max-width: 985px) {
+  .changeName {
+    font-size: 1.5rem;
+  }
+
+  .intro,
+  .intro2 {
+    font-size: 1.5rem;
+  }
+
+  .intro {
+    margin-left: 9vw;
+  }
+
+  .intro2 {
+    margin-left: 26vw;
+    margin-top: 53vh;
+  }
+}
 @keyframes close {
   0% {
     opacity: 1;

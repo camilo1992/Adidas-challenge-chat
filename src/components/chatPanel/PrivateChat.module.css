@@ -112,6 +112,35 @@ p {
   background-color: var(--second-colour);
 }
 
+@media (max-width: 985px) {
+  .privateChat {
+    width: 80%;
+    left: 9.5vw;
+    top: -26.5vh;
+    height: 30vh;
+  }
+
+  .messageContainerRecieved {
+    font-size: 1.4rem;
+  }
+  .messageContainerSent {
+    font-size: 1.4rem;
+  }
+  .screen {
+    width: 80vw;
+  }
+  .messageContainerRecieved {
+    height: 5vh;
+  }
+  .textArea {
+    height: 8vh;
+    font-size: 1.2rem;
+  }
+  .buttonContainer {
+    top: -5.2vh;
+  }
+}
+
 @keyframes open {
   0% {
     opacity: 0;

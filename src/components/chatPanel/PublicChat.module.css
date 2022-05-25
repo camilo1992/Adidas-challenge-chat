@@ -63,8 +63,16 @@
   left: 16%;
 }
 
-p {
-  font-size: 120%;
+.publicChat p {
+  font-size: 2rem;
+  margin: 0;
+  height: 2%;
+  margin-left: 10px;
+  font-family: "Audiowide", cursive;
+  color: var(--fourth-colour);
+}
+.publicChat2 p {
+  font-size: 2rem;
   margin: 0;
   height: 2%;
   margin-left: 10px;
@@ -129,16 +137,50 @@ p {
   /* position: relative; */
 }
 .textArea {
-  font-size: 100%;
+  font-size: 1rem;
   font-family: "Audiowide", cursive;
   color: var(--first-colour);
   margin-left: 3%;
-  width: 95%;
+  width: 56vw;
   height: 72%;
   position: relative;
   top: 2vh;
   text-align: right;
   background-color: var(--second-colour);
+}
+
+@media (max-width: 985px) {
+  .publicChat {
+    width: 80%;
+    left: 9.5vw;
+    top: -27.5vh;
+  }
+  .publicChat2 {
+    width: 80%;
+    left: 10.5vw;
+    top: -27.5vh;
+    height: 40vh;
+  }
+
+  .messageContainerRecieved {
+    font-size: 1.4rem;
+  }
+  .messageContainerSent {
+    font-size: 1.4rem;
+  }
+  .screen {
+    width: 80vw;
+  }
+  .messageContainerRecieved {
+    height: 5vh;
+  }
+  .textArea {
+    height: 8vh;
+    font-size: 1.2rem;
+  }
+  .buttonContainer {
+    top: -5.2vh;
+  }
 }
 
 @keyframes open {

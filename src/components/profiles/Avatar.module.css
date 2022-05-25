@@ -13,7 +13,13 @@
 }
 
 .avatar {
-  font-size: 50px;
+  font-size: 5rem;
+}
+
+@media (max-width: 985px) {
+  .avatar {
+    font-size: 3rem;
+  }
 }
 @keyframes open {
   0% {

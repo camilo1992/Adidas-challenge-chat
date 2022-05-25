@@ -1,7 +1,7 @@
 #profileContainer {
   margin: 0;
   right: 0;
-  left: 18.2vh;
+  left: 8.2vw;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -9,7 +9,7 @@
   align-items: center;
   top: -24.5vh;
   height: 73vh;
-  width: 18%;
+  width: 18vw;
   /* background-color: var(--first-colour); */
   background: linear-gradient(
     to right,
@@ -23,6 +23,16 @@
   animation: appear 2s ease-out;
 
   /* box-shadow: 15px 15px 10px; */
+}
+
+@media (max-width: 985px) {
+  #profileContainer {
+    left: 9.2vw;
+    top: -28.5vh;
+    height: 23vh;
+    width: 80vw;
+    overflow: hidden;
+  }
 }
 
 @keyframes appear {
