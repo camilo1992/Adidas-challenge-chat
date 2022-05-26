@@ -38,6 +38,7 @@ function SelectPro() {
       proCtx.onChangeName(`nameless ${Math.round(Math.random() * 99)}`);
       return;
     }
+
     proCtx.onChangeName(e.target.value);
   };
 
