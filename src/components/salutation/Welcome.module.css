@@ -35,6 +35,11 @@ p {
   margin-top: 0;
 }
 
+.p2 {
+  display: none;
+  text-align: right;
+}
+
 .welcomeButton {
   background: linear-gradient(
     to left,
@@ -47,6 +52,26 @@ p {
   top: 38vh;
   text-align: right;
   left: 70.7%;
+}
+
+.welcomeButton2 {
+  background: linear-gradient(
+    to left,
+    var(--third-colour),
+    var(--second-colour)
+  );
+  position: relative;
+  width: 30vw;
+  height: 7vh;
+  top: 38vh;
+  text-align: right;
+  left: 70.7%;
+}
+.welcomeButton2::before {
+  content: "<-- BACK";
+  text-align: right;
+  font-size: 1.5rem;
+  font-family: "Audiowide", cursive;
 }
 
 .welcome::before {
@@ -69,8 +94,8 @@ p {
     width: 18vw;
     left: 83.7%;
     height: 5rem;
-    z-index: 99;
   }
+
   .welcome {
     font-size: 3rem;
     height: 15vh;
@@ -79,6 +104,15 @@ p {
   .welcome::before {
     font-size: 2.5rem;
     height: 6vh;
+  }
+
+  .p2 {
+    display: none;
+  }
+  .welcomeButton2::before {
+    content: "<-";
+    text-align: right;
+    font-family: "Audiowide", cursive;
   }
 }
 @keyframes open {

@@ -1,5 +1,5 @@
 p {
-  font-size: 120%;
+  font-size: 2rem;
   margin: 0;
   height: 2%;
   margin-left: 10px;
@@ -100,7 +100,7 @@ p {
   background-color: var(--third-colour);
 }
 .textArea {
-  font-size: 100%;
+  font-size: 1.6rem;
   font-family: "Audiowide", cursive;
   color: var(--first-colour);
   margin-left: 3%;
@@ -128,7 +128,7 @@ p {
   }
   .screen {
     width: 70vw;
-    height: 13vh;
+    height: 11vh;
     margin: auto;
   }
   .messageContainerRecieved {
@@ -141,6 +141,10 @@ p {
   }
   .buttonContainer {
     top: -5.2vh;
+  }
+
+  p {
+    font-size: 1.2rem;
   }
 }
 

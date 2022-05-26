@@ -23,8 +23,20 @@ function Welcome(props) {
           : classes.WelcomeContainer2
       }
     >
-      <p className={classes.welcome}>{props.text}</p>
-      <div className={classes.welcomeButton}>
+      <p
+        className={`${
+          !proCtx.isProfileSelected ? classes.welcome : classes.p2
+        }`}
+      >
+        {props.text}
+      </p>
+      <div
+        className={`${
+          !proCtx.isProfileSelected
+            ? classes.welcomeButton
+            : classes.welcomeButton2
+        }`}
+      >
         <Button onClick={handleClick} text="Go chat -->" />
       </div>
     </div>

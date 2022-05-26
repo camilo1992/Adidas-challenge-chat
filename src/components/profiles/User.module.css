@@ -20,6 +20,10 @@
   .user {
     font-size: 3rem;
   }
+  .userContainer {
+    height: 2.5rem;
+    background-color: transparent;
+  }
 }
 
 .name {

@@ -137,11 +137,11 @@
   /* position: relative; */
 }
 .textArea {
-  font-size: 1rem;
+  font-size: 1.6rem;
   font-family: "Audiowide", cursive;
   color: var(--first-colour);
   margin-left: 3%;
-  width: 56vw;
+  width: 38vw;
   height: 72%;
   position: relative;
   top: 2vh;
